@@ -213,7 +213,7 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 			ty = canvasBox.Top + (canvasBox.Height() + tb.Width()>>1)
 		} else {
 			//ty = canvasBox.Top + (canvasBox.Height()>>1 - tb.Height()>>1)
-			ty = 0
+			ty = tb.Height() + DefaultYAxisMargin
 		}
 
 		Draw.Text(r, ya.Name, tx, ty, nameStyle)
