@@ -1,6 +1,7 @@
 package chart
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -214,6 +215,8 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 		} else {
 			//ty = canvasBox.Top + (canvasBox.Height()>>1 - tb.Height()>>1)
 			ty = canvasBox.Top + (canvasBox.Height() - tb.Height()>>1)
+			fmt.Printf("top:%d,height:%d,tbHeight:%d,ty:%d\n",
+				canvasBox.Top, canvasBox.Height(), tb.Height(), ty)
 		}
 
 		Draw.Text(r, ya.Name, tx, ty, nameStyle)
