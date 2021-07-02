@@ -1,7 +1,6 @@
 package chart
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -203,7 +202,7 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 		var tx int
 		if ya.AxisType == YAxisPrimary {
 			//tx = canvasBox.Right + int(sw) + DefaultYAxisMargin + maxTextWidth + DefaultYAxisMargin
-			tx = canvasBox.Right - (int(sw) + maxTextWidth>>1)
+			tx = canvasBox.Right + DefaultYAxisMargin - (int(sw) + maxTextWidth>>1)
 		} else if ya.AxisType == YAxisSecondary {
 			tx = canvasBox.Left - (DefaultYAxisMargin + int(sw) + maxTextWidth + DefaultYAxisMargin)
 		}
@@ -214,9 +213,7 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 			ty = canvasBox.Top + (canvasBox.Height() + tb.Width()>>1)
 		} else {
 			//ty = canvasBox.Top + (canvasBox.Height()>>1 - tb.Height()>>1)
-			ty = canvasBox.Top + (canvasBox.Height() - tb.Height()>>1)
-			fmt.Printf("top:%d,height:%d,tbHeight:%d,ty:%d\n",
-				canvasBox.Top, canvasBox.Height(), tb.Height(), ty)
+			ty = 0
 		}
 
 		Draw.Text(r, ya.Name, tx, ty, nameStyle)
