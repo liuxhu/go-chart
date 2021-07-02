@@ -202,18 +202,18 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 		var tx int
 		if ya.AxisType == YAxisPrimary {
 			//tx = canvasBox.Right + int(sw) + DefaultYAxisMargin + maxTextWidth + DefaultYAxisMargin
-			tx = canvasBox.Right + DefaultYAxisMargin - (int(sw) + maxTextWidth>>1)
+			tx = canvasBox.Right + DefaultYAxisMargin + DefaultYAxisMargin - (int(sw) + maxTextWidth>>1)
 		} else if ya.AxisType == YAxisSecondary {
-			tx = canvasBox.Left - (DefaultYAxisMargin + int(sw) + maxTextWidth + DefaultYAxisMargin)
+			tx = canvasBox.Left - (int(sw) + maxTextWidth + DefaultYAxisMargin)
 		}
 
 		var ty int
 		if nameStyle.TextRotationDegrees == 0 {
 			//ty = canvasBox.Top + (canvasBox.Height()>>1 - tb.Width()>>1)
-			ty = canvasBox.Top + (canvasBox.Height() + tb.Width()>>1)
+			ty = tb.Width() + DefaultYAxisMargin + DefaultYAxisMargin
 		} else {
 			//ty = canvasBox.Top + (canvasBox.Height()>>1 - tb.Height()>>1)
-			ty = tb.Height() + DefaultYAxisMargin
+			ty = tb.Height() + DefaultYAxisMargin + DefaultYAxisMargin
 		}
 
 		Draw.Text(r, ya.Name, tx, ty, nameStyle)
