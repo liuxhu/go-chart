@@ -203,9 +203,9 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 		var tx int
 		if ya.AxisType == YAxisPrimary {
 			//tx = canvasBox.Right + int(sw) + DefaultYAxisMargin + maxTextWidth + DefaultYAxisMargin
-			tx = canvasBox.Right - (int(sw) + maxTextWidth)
+			tx = canvasBox.Right - (int(sw) + maxTextWidth>>1)
 		} else if ya.AxisType == YAxisSecondary {
-			tx = canvasBox.Left - (DefaultYAxisMargin + int(sw) + maxTextWidth)
+			tx = canvasBox.Left - (DefaultYAxisMargin + int(sw) + maxTextWidth + DefaultYAxisMargin)
 		}
 
 		var ty int
