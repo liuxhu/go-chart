@@ -210,10 +210,10 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 		var ty int
 		if nameStyle.TextRotationDegrees == 0 {
 			//ty = canvasBox.Top + (canvasBox.Height()>>1 - tb.Width()>>1)
-			ty = tb.Width() >> 1
+			ty = tb.Width()
 		} else {
 			//ty = canvasBox.Top + (canvasBox.Height()>>1 - tb.Height()>>1)
-			ty = tb.Height() >> 1
+			ty = tb.Height()
 		}
 
 		Draw.Text(r, ya.Name, tx, ty, nameStyle)
