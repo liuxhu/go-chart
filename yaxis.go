@@ -202,7 +202,7 @@ func (ya YAxis) Render(r Renderer, canvasBox Box, ra Range, defaults Style, tick
 		var tx int
 		if nameStyle.TextRotationDegrees == 360 {
 			if ya.AxisType == YAxisPrimary {
-				tx = canvasBox.Right + DefaultYAxisMargin + DefaultYAxisMargin - (int(sw) + len(ya.Name))
+				tx = canvasBox.Right - int(sw) - len(ya.Name)<<1
 			} else if ya.AxisType == YAxisSecondary {
 				tx = canvasBox.Left - (int(sw) + len(ya.Name) + DefaultYAxisMargin + DefaultYAxisMargin)
 			}
